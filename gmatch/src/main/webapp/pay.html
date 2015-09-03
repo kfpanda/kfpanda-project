@@ -1,0 +1,36 @@
+﻿<html>
+<head>
+<title>支付测试页面</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
+<style>
+.div-img{
+	margin:10px 0px 10px 100px;
+}
+</style>
+</head>
+<body>
+<div>
+	<form id="tradeForm" action="/awifi-pay/pay/trade" method="post">
+		<input name="tradeno" value="" disabled="disabled"></input>
+		<input name="tradename" value="爱wifi交易"></input>
+		<input name="totalfee" value="1"></input>
+		<input name="showurl" value="http://www.baidu.com"></input>
+		<input name="paytype" value="" readonly="readonly"></input>
+	</form>
+	<div class="div-img"><a onclick="union"><img src="./statics/imgs/union_logo/1.jpg" /></a></div>
+	<div class="div-img"><a onclick="tianyi"><img src="./statics/imgs/tianyi_logo/48.png" /></a></div>
+	<div class="div-img"><a onclick="alipay"><img src="./statics/imgs/alipay_logo/228x80.png" /></a></div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+function formSubmit(payType){
+	
+	var tradeNo = document.getElementByName("tradeno");
+	tradeNo.value();
+	document.getElementByName("tradeno").value(payType);
+	var form = document.getElementById("tradeForm");
+	form.submit();
+}
+</script>
