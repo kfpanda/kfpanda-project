@@ -1,5 +1,5 @@
 /*==============================================================*/
-/* Database name:  Database_1                                   */
+/* Database name:  gmatch                                   */
 /* DBMS name:      MySQL 5.0                                    */
 /* Created on:     2015/9/2 14:53:31                            */
 /*==============================================================*/
@@ -220,7 +220,7 @@ create table player
    cnname               varchar(50),
    enname               varchar(30),
    gamebest             varchar(10),
-   Favourite            varchar(100),
+   favourite            varchar(100),
    pid                  bigint,
    gid                  bigint,
    primary key (id)
