@@ -35,8 +35,7 @@ public class HotSiteAction extends BaseAction{
 	}
 	
 	/**
-	 * 赛站选手查询
-	 * @return
+	 * 赛站选手查询（接口：1.0.2）
 	 * @author 许小满  
 	 * @date 2015年9月12日 下午1:09:05
 	 */
@@ -46,7 +45,20 @@ public class HotSiteAction extends BaseAction{
 			@RequestParam(value = "score",required=false) String score,
 			@PageableDefaults(pageNumber=0, value=5, sort="gamebest=asc") Pageable pageable
 			) {
-		score = StringUtils.isBlank(score) ? null : score;
+		score = StringUtils.isBlank(score) ? "-1" : score;
 		return this.getResult(hotSiteBiz.playerFind(hId, score, pageable));
+	}
+	
+	/**
+	 * 赛站结果查询（接口：1.0.3）
+	 * @author 许小满  
+	 * @date 2015年9月12日 下午6:37:55
+	 */
+	@RequestMapping(value = "/score/find")
+	public @ResponseBody Object scoreFind(
+			@RequestParam(value = "hid") long hId,
+			@PageableDefaults(pageNumber=0, value=5, sort="gamebest=asc") Pageable pageable
+			) {
+		return this.getResult(hotSiteBiz.scoreFind(hId, pageable));
 	}
 }
