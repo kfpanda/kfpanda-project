@@ -1,6 +1,7 @@
 package com.kfpanda.gmatch.action;
 
 import javax.annotation.Resource;
+
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.kfpanda.gmatch.biz.HotSiteBiz;
 
 
@@ -56,9 +58,8 @@ public class HotSiteAction extends BaseAction{
 	 */
 	@RequestMapping(value = "/score/find")
 	public @ResponseBody Object scoreFind(
-			@RequestParam(value = "hid") long hId,
-			@PageableDefaults(pageNumber=0, value=5, sort="gamebest=asc") Pageable pageable
+			@RequestParam(value = "hid") long hId
 			) {
-		return this.getResult(hotSiteBiz.scoreFind(hId, pageable));
+		return this.getResult(hotSiteBiz.scoreFind(hId));
 	}
 }

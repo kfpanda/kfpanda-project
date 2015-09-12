@@ -27,4 +27,8 @@ public class HotSiteSql {
 	
 	//赛站奖励查询
 	public static final String HOTSITERESULT_SQL = "select result from hotsite where id=#{hId}";
+	
+	//指定赛站成绩查询对应的选手
+	public static final String PLAYERBYNUM_SQL = "select p.cnname from hotsite h inner join player_hotsite ph on ph.hid=h.id inner join player p on ph.pid=p.id "
+			+ "inner join hotsite_score hs on (h.id=hs.hid and hs.pid=p.id) where h.id=#{hId} and hs.num=#{num}";
 }
