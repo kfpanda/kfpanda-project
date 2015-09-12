@@ -27,10 +27,26 @@ public class HotSiteAction extends BaseAction{
 			@RequestParam(value = "startdate") long startDate,
             @RequestParam(value = "enddate") long endDate,
             @RequestParam(value = "mname",required=false) String mName,
-            @PageableDefaults(pageNumber=1, value=5, sort="createTime=desc") Pageable pageable) {
+            @PageableDefaults(pageNumber=0, value=5, sort="createTime=desc") Pageable pageable) {
 		
 		mName = StringUtils.isBlank(mName) ? null : mName;
 		
 		return this.getResult(hotSiteBiz.find(gId, startDate, endDate, mName, pageable));
+	}
+	
+	/**
+	 * 赛站选手查询
+	 * @return
+	 * @author 许小满  
+	 * @date 2015年9月12日 下午1:09:05
+	 */
+	@RequestMapping(value = "/player/find")
+	public @ResponseBody Object playerFind(
+			@RequestParam(value = "hid") long hId,
+			@RequestParam(value = "score",required=false) String score,
+			@PageableDefaults(pageNumber=0, value=5, sort="gamebest=asc") Pageable pageable
+			) {
+		score = StringUtils.isBlank(score) ? null : score;
+		return this.getResult(hotSiteBiz.playerFind(hId, score, pageable));
 	}
 }

@@ -23,4 +23,8 @@ public interface HotSiteMapper {
     @Select(HotSiteSql.FINDBYGID_SQL)
     List<Map<String, Object>> find(@Param("gId")Long gId, @Param("startDate")Long startDate, 
     		@Param("endDate")Long endDate, @Param("mName")String mName, @Param("pageable")Pageable pageable);
+    
+    //赛站选手查询
+    @Select(HotSiteSql.PLAYERFIND_SQL)
+    List<Map<String, Object>> playerFind(@Param("hId")Long hId, @Param("score")String score, @Param("pageable")Pageable pageable);
 }
