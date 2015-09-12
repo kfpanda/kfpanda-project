@@ -26,7 +26,7 @@ public class HotSiteAction extends BaseAction{
 			@RequestParam(value = "gid") long gId,
 			@RequestParam(value = "startdate") long startDate,
             @RequestParam(value = "enddate") long endDate,
-            @RequestParam(value = "mname") String mName,
+            @RequestParam(value = "mname",required=false) String mName,
             @PageableDefaults(pageNumber=1, value=5, sort="createTime=desc") Pageable pageable) {
 		
 		mName = StringUtils.isBlank(mName) ? null : mName;
