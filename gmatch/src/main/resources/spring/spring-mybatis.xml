@@ -7,7 +7,8 @@
 	
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="pandaDataSource" />
-		<!-- <property name="mapperLocations" value="classpath*:com/kfpanda/citypin/mapper/**/*.xml" /> -->
+		<property name="mapperLocations" value="classpath*:com/kfpanda/gmatch/mapper/**/*.xml" />
+		<property name="configLocation" value="classpath:db/mybatis-info-config.xml"/>
 	</bean>
 	
 	<!-- 注册Mapper方式二：也可不指定特定mapper，而使用自动扫描包的方式来注册各种Mapper ，配置如下：-->  

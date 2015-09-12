@@ -1,9 +1,12 @@
 package com.kfpanda.gmatch.bean;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 
-public class People {
+public class People implements Serializable{
+	private static final long	serialVersionUID	= -2623360343381933074L;
+	
 	private Long id;
 	private Timestamp createTime;
 	private Timestamp updateTime;
@@ -75,5 +78,13 @@ public class People {
 	
 	public void setCollege(String college) {
 		this.college = college;
+	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
 	}
 }
