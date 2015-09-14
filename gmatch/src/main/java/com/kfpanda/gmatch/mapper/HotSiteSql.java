@@ -1,5 +1,7 @@
 package com.kfpanda.gmatch.mapper;
 
+import java.util.Map;
+
 public class HotSiteSql {
 	
 	public static final String TABLE_NAME = "hotsite";
@@ -16,6 +18,16 @@ public class HotSiteSql {
 			+ "AND hs.startdate > FROM_UNIXTIME(#{startDate}, '%Y-%m-%d %H:%i:%S') AND hs.enddate < FROM_UNIXTIME(#{endDate}, '%Y-%m-%d %H:%i:%S') " 
 			+ " order by hs.startdate desc limit #{pageable.offset},#{pageable.pageSize}";
 	
+	public String findByGidName(Map<String, Object> param){
+		String sql = "SELECT hs.*, m.id as mid, m.name as mname, m.holder as mholder, m.size as msize, m.cycle as mcycle, m.level as mlevel, m.type as mtype," 
+				+ " m.gid as gid FROM hotsite hs, `match` m WHERE hs.mid=m.id AND m.gid=#{gId} ";
+		if(param.get("mName") != null){
+			sql += " AND m.name LIKE CONCAT('%',#{mName},'%')";
+		}
+		sql += " AND hs.startdate > FROM_UNIXTIME(#{startDate}, '%Y-%m-%d %H:%i:%S') AND hs.enddate < FROM_UNIXTIME(#{endDate}, '%Y-%m-%d %H:%i:%S') " 
+				+ " order by hs.startdate desc limit #{pageable.offset},#{pageable.pageSize}";
+		return sql;
+	}
 	
 	//赛站选手查询
 	public static final String PLAYERFIND_SQL = "select * from (select h.id as hid,p.id as pid,p.cnname,(select count(m1.id) from `match` m1 inner join hotsite h1 on m1.id=h1.mid "

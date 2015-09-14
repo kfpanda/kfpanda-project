@@ -23,6 +23,11 @@ public class HotSiteAction extends BaseAction{
 	@Resource(name="hotSiteBiz")
 	private HotSiteBiz hotSiteBiz;
 	
+	/**
+	 * 赛站查询（接口：1.0.1）
+	 * @author kfpanda
+	 * @date 2015年9月12日 下午1:09:05
+	 */
 	@RequestMapping(value = "/find")
 	public @ResponseBody Object find(
 			@RequestParam(value = "gid") long gId,

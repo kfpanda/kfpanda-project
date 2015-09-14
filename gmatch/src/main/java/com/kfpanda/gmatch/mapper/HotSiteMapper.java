@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectProvider;
 import org.springframework.data.domain.Pageable;
 import com.kfpanda.gmatch.bean.HotSite;
 
@@ -20,7 +21,7 @@ public interface HotSiteMapper {
     @Select(HotSiteSql.FINDBYID_SQL)
     HotSite findOne(Long id);
     
-    @Select(HotSiteSql.FINDBYGID_SQL)
+    @SelectProvider(type = HotSiteSql.class, method = "findByGidName")
     List<Map<String, Object>> find(@Param("gId")Long gId, @Param("startDate")Long startDate, 
     		@Param("endDate")Long endDate, @Param("mName")String mName, @Param("pageable")Pageable pageable);
     

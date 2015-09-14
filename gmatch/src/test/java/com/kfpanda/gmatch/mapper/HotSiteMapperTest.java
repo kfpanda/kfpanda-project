@@ -60,7 +60,7 @@ public class HotSiteMapperTest {
 	@Test
 	public void find(){
 		Pageable pageable = new PageRequest(0, 10);
-		List<Map<String, Object>> hotSiteList = hotSiteMapper.find(new Long(1), new Long(32), new Long(34), "", pageable);
+		List<Map<String, Object>> hotSiteList = hotSiteMapper.find(new Long(1), new Long(32), new Long(34), null, pageable);
 		Assert.assertTrue(hotSiteList.size() > 0);
 	}
 }

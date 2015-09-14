@@ -45,6 +45,17 @@ public class PeopleAction extends BaseAction{
 		return this.getResult(peopleBiz.savePeople(people));
 	}
 	
+	/**
+	 * 真实选手查询（接口：1.0.5）
+	 * @author kfpanda
+	 * @date 2015年9月14日 下午1:09:05
+	 */
+	@RequestMapping(value = "/player/find")
+	public @ResponseBody Object playerFind(@RequestParam(value = "pid") long pId) {
+		
+		return this.getResult(peopleBiz.findOne(pId));
+	}
+	
 	@RequestMapping(value = "/find")
 	public @ResponseBody Object msgSearch(@RequestParam(value = "name") String name) {
 		
