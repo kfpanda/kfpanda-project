@@ -43,4 +43,23 @@ public class HotSiteSql {
 	//指定赛站成绩查询对应的选手
 	public static final String PLAYERBYNUM_SQL = "select p.cnname from hotsite h inner join player_hotsite ph on ph.hid=h.id inner join player p on ph.pid=p.id "
 			+ "inner join hotsite_score hs on (h.id=hs.hid and hs.pid=p.id) where h.id=#{hId} and hs.num=#{num}";
+	
+	//选手比赛场次胜率
+	public static final String PLAYERCRATE_SQL = "select sum(v2.win_num) win_nums,sum(v2.lost_num) lost_nums,sum(v2.win_num)/count(v2.win_num)  as win_rate "
+				+ "from (select case when v1.win_pid = #{pId}  then 1 else 0 end as win_num,case when v1.win_pid != #{pId}  then 1 else 0 end as lost_num "
+				+ "from (select v.hid,v.round,v.pid1,v.pid2,case when v.a_win_num > v.b_win_num then v.pid1 else v.pid2 end as win_pid "
+				+ "from (select ha.hid,ha.round,ha.pid1,ha.pid2,sum(case  when ha.result='A' then 1 else 0 end) as a_win_num,"
+				+ "sum(case  when ha.result='B' then 1 else 0 end) as b_win_num from hotagainst ha where (ha.pid1 = #{pId} or ha.pid2 = #{pId} )group by ha.hid,ha.round,ha.pid1,ha.pid2)v)v1)v2";
+	
+	//选手比赛局数胜率
+	public static final String PLAYERJRATE_SQL = "select sum(v1.win_num) win_nums,sum(v1.lost_num) lost_nums,sum(v1.win_num)/count(v1.win_num)  as win_rate "
+					+ "from (select case when v.win_pid = #{pId}  then 1 else 0 end as win_num,case when v.win_pid != #{pId}  then 1 else 0 end as lost_num "
+					+ "from (select ha.pid1,ha.pid2,case  when ha.result='A' then ha.pid1 else ha.pid2 end as win_pid from hotagainst ha where ha.pid1=#{pId}  or ha.pid2=#{pId} )v)v1";
+	
+	//选手各职业、套牌胜率
+	public static final String PLAYEROCRATE_SQL = "select * from (select v1.occupation,sum(v1.win_num) win_nums,sum(v1.lost_num) lost_nums,sum(v1.win_num)/count(v1.win_num)  as win_rate "
+				+ "from(select v.occupation,case when v.win_pid = #{pId}  then 1 else 0 end as win_num,case when v.win_pid != #{pId}  then 1 else 0 end as lost_num "
+				+ "from (select case when ha.pid1=2 then concat(ha.occupation1,'（',ha.cards1,'）') else concat(ha.occupation2,'（',ha.cards2,'）') end as occupation,"
+				+ "case  when ha.result='A' then ha.pid1 else ha.pid2 end as win_pid from hotagainst ha where ha.pid1=#{pId}  or ha.pid2=#{pId} )v)v1 "
+				+ "group by v1.occupation)v2 order by v2.win_rate desc limit #{pageable.offset},#{pageable.pageSize}";
 }

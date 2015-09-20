@@ -37,4 +37,16 @@ public class PlayerAction extends BaseAction{
 		return this.getResult(playerBiz.findByGidName(gId, cnName, enName, pageable));
 	}
 	
+	/**
+	 * 游戏选手职业数据查询(接口:1.0.6)
+	 * @author 许小满  
+	 * @date Sep 20, 2015 4:53:41 PM
+	 */
+	@RequestMapping(value = "/gamedata/find")
+	public @ResponseBody Object gamedataFind(
+			     @RequestParam(value = "pid") long pId,
+				@PageableDefaults(pageNumber=0, value=5, sort="win_rate=desc") Pageable pageable) {
+		return this.getResult(playerBiz.gamedataFind(pId,  pageable));
+	}
+	
 }
