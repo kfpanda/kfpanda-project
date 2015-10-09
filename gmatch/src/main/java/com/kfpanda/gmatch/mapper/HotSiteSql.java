@@ -30,12 +30,26 @@ public class HotSiteSql {
 	}
 	
 	//赛站选手查询
-	public static final String PLAYERFIND_SQL = "select * from (select h.id as hid,p.id as pid,p.cnname,(select count(m1.id) from `match` m1 inner join hotsite h1 on m1.id=h1.mid "
-			+ "inner join player_hotsite ph1 on h1.id=ph1.hid where m1.id=h.mid and ph1.pid=p.id) as gametime,(select h2.name from `match` m2 "
-			+ "inner join hotsite h2 on m2.id=h2.mid inner join hotsite_score hs2 on hs2.hid=h2.id where hs2.pid=p.id order by hs2.num limit 1 ) as sitebest,(select hs2.num from `match` m2 "
-			+ "inner join hotsite h2 on m2.id=h2.mid inner join hotsite_score hs2 on hs2.hid=h2.id where hs2.pid=p.id order by hs2.num limit 1 ) as gamebest from hotsite h "
-			+ "inner join player_hotsite ph on h.id=ph.hid inner join player p on ph.pid=p.id where h.id=#{hId} and (#{score}='-1' or exists(select hs.id from hotsite_score hs "
-			+ "where hs.pid=p.id and hs.num in (${score}))) )v order by v.gamebest limit #{pageable.offset},#{pageable.pageSize}";
+	private static String PLAYERFIND_SQL = null;;
+	public String getPlayFindSql(){
+		if(PLAYERFIND_SQL != null){
+			return PLAYERFIND_SQL;
+		}
+		StringBuffer sql = new StringBuffer();
+		sql.append("SELECT * FROM(")
+					.append("SELECT h.id AS hid,p.id AS pid,p.cnname,")
+					.append("(SELECT count(m1.id) FROM `match` m1 INNER JOIN hotsite h1 ON m1.id = h1.mid INNER JOIN player_hotsite ph1 ON h1.id = ph1.hid WHERE m1.id = h.mid AND ph1.pid = p.id) AS gametime,")
+					.append("(SELECT h2. NAME FROM `match` m2 INNER JOIN hotsite h2 ON m2.id = h2.mid INNER JOIN hotsite_score hs2 ON hs2.hid = h2.id WHERE hs2.pid = p.id ORDER BY hs2.num LIMIT 1) AS sitebest,")
+					.append("(SELECT hs2.num FROM `match` m2 INNER JOIN hotsite h2 ON m2.id = h2.mid INNER JOIN hotsite_score hs2 ON hs2.hid = h2.id WHERE hs2.pid = p.id ORDER BY hs2.num LIMIT 1) AS gamebest ")
+				.append("FROM hotsite h INNER JOIN player_hotsite ph ON h.id = ph.hid INNER JOIN player p ON ph.pid = p.id ")
+				.append("WHERE h.id =#{hId} ")
+			.append("AND (#{score}= '-1' OR EXISTS (SELECT hs.id FROM hotsite_score hs WHERE hs.pid = p.id AND hs.num IN (#{score}) )) ")
+			.append("AND (#{keyword} IS NULL OR p.cnname like concat('%',ifnull(#{keyword},''),'%') ) ")
+		.append(") v ORDER BY v.gamebest LIMIT #{pageable.offset},#{pageable.pageSize}") ;
+		//System.out.println("sql= "+sql.toString());
+		PLAYERFIND_SQL = sql.toString();
+		return PLAYERFIND_SQL;
+	}
 	
 	//赛站奖励查询
 	public static final String HOTSITERESULT_SQL = "select result from hotsite where id=#{hId}";

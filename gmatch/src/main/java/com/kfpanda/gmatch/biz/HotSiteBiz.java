@@ -40,12 +40,13 @@ public class HotSiteBiz {
 	 * 赛站选手查询
 	 * @param hId 赛站id 
 	 * @param score 成绩 -- 查询条件
+	 * @param keyword 关键字 -- 查询条件
 	 * @param pageable 分页
 	 * @author 许小满  
 	 * @date 2015年9月12日 下午5:33:03
 	 */
-	public List<Map<String, Object>> playerFind(Long hId, String score, Pageable pageable){
-		return hotSiteMapper.playerFind(hId, score, pageable);
+	public List<Map<String, Object>> playerFind(Long hId, String score, String keyword, Pageable pageable){
+		return hotSiteMapper.playerFind(hId, score,keyword,pageable);
 	}
 	
 	/**

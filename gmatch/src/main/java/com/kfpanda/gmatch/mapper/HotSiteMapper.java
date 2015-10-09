@@ -26,8 +26,8 @@ public interface HotSiteMapper {
     		@Param("endDate")Long endDate, @Param("mName")String mName, @Param("pageable")Pageable pageable);
     
     //赛站选手查询
-    @Select(HotSiteSql.PLAYERFIND_SQL)
-    List<Map<String, Object>> playerFind(@Param("hId")Long hId, @Param("score")String score, @Param("pageable")Pageable pageable);
+    @SelectProvider(type=HotSiteSql.class, method="getPlayFindSql")
+    List<Map<String, Object>> playerFind(@Param("hId")Long hId, @Param("score")String score,@Param("keyword")String keyword, @Param("pageable")Pageable pageable);
     
     //赛站奖励查询
     @Select(HotSiteSql.HOTSITERESULT_SQL)

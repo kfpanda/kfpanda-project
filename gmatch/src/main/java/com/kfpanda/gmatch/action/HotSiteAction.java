@@ -50,10 +50,11 @@ public class HotSiteAction extends BaseAction{
 	public @ResponseBody Object playerFind(
 			@RequestParam(value = "hid") long hId,
 			@RequestParam(value = "score",required=false) String score,
+			@RequestParam(value = "keyword",required=false) String keyword,
 			@PageableDefaults(pageNumber=0, value=5, sort="gamebest=asc") Pageable pageable
 			) {
 		score = StringUtils.isBlank(score) ? "-1" : score;
-		return this.getResult(hotSiteBiz.playerFind(hId, score, pageable));
+		return this.getResult(hotSiteBiz.playerFind(hId, score, keyword, pageable));
 	}
 	
 	/**
