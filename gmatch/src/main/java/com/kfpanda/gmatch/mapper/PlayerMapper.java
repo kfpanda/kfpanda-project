@@ -25,6 +25,9 @@ public interface PlayerMapper {
     List<Map<String, Object>> findByGidName(@Param("gId")Long gId, @Param("cnName")String cnName, 
     		@Param("enName")String enName, @Param("pageable")Pageable pageable);
     
+	//选手查询
+    @SelectProvider(type = PlayerSql.class, method = "findByName")
+    Player findByName(@Param("cnName")String cnName, @Param("enName")String enName);
     
     //选手比赛场次胜率
     @Select(HotSiteSql.PLAYERCRATE_SQL)

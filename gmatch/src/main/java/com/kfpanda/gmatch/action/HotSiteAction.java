@@ -30,12 +30,15 @@ public class HotSiteAction extends BaseAction{
 	 */
 	@RequestMapping(value = "/find")
 	public @ResponseBody Object find(
-			@RequestParam(value = "gid") long gId,
-			@RequestParam(value = "startdate") long startDate,
-            @RequestParam(value = "enddate") long endDate,
+			@RequestParam(value = "gid") long gId,//默认值为 2014-01-01
+			@RequestParam(value = "startdate",required=false, defaultValue="1388534400000") long startDate,
+            @RequestParam(value = "enddate",required=false, defaultValue="0") long endDate,
             @RequestParam(value = "mname",required=false) String mName,
             @PageableDefaults(pageNumber=0, value=5, sort="createTime=desc") Pageable pageable) {
 		
+		endDate = endDate < 1 ? System.currentTimeMillis() : endDate;
+		startDate = startDate / 1000;
+		endDate = endDate / 1000;  //转换为秒
 		mName = StringUtils.isBlank(mName) ? null : mName;
 		
 		return this.getResult(hotSiteBiz.find(gId, startDate, endDate, mName, pageable));

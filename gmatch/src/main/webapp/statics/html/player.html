@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
+		<meta name="format-detection" content="telephone=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <title>炉石传说</title>
+        <link type="text/css" rel="stylesheet" href="../css/sweetalert.css"/>
+        <link type="text/css" rel="stylesheet" href="../css/base.css"/>
+		<link type="text/css" rel="stylesheet" href="../css/player.css"/>
+    </head>
+    <body>
+        <div class="main clearfix">
+            <div class="search">
+                <input type="text" placeholder="请输入选手ID"/>
+                <em></em>
+            </div>
+            <div class="list">
+                <table cellpadding=0 cellspacing=0>
+                    <thead>
+                        <tr>
+                            <th>游戏ID</th>
+                            <th>赛事荣誉</th>
+                            <th>最近赛事</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="list-tip">
+                            <td colspan="3">加载中...</td>
+                        </tr>
+                        <!--
+                        <tr uid="1">
+                            <td>xPlane_Lee</td>
+                            <td>2014炉火世锦赛亚军</td>
+                            <td>2015DreamHack夏季赛冠军</td>
+                        </tr>
+                        <tr uid="2">
+                            <td>小鱼仙人</td>
+                            <td>2015炉火世锦赛冠军</td>
+                            <td>2015DreamHack夏季赛16强</td>
+                        </tr>
+                        <tr uid="3">
+                            <td>Json Chen</td>
+                            <td>2015炉火世锦赛8强</td>
+                            <td>2015DreamHack夏季赛季军</td>
+                        </tr>
+                        -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="footer">
+            <a href="./match.html"><i class="icon-crown"></i>赛事</a>
+            <a class="btcenter light" href="./player.html"><i class="icon-player"></i>选手</a>
+            <a href="./profile.html"><i class="icon-person"></i>我</a>
+        </div>
+    </body>
+	<script type="text/javascript" src="../script/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="../script/sweetalert.min.js"></script>
+	<script type="text/javascript" src="../script/fn.js"></script>
+	<script type="text/javascript">
+        var _page = { curpage: 1 };
+
+		$(function(){
+            swal.setDefaults({
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                allowOutsideClick: true
+            });
+
+            $('.list table').on('click', 'tr[uid]', function(e){
+                var id = $(this).attr('uid');
+                if(id){
+                    window.location.href = './player-detail.html?id=' + id;
+                }
+            });
+
+            var $se = $('.search');
+            $se.find('input').on('change', function(e){
+                query(this.value);
+            });
+            $se.find('em').on('click', function(e){
+                query($se.find('input').val());
+            });
+            $('.main').on('click', '.list-more',function(e){
+                query($se.find('input').val(), true);
+            });
+
+            query();
+		});
+
+        function query(key, more){
+            $.ajax({
+                type: 'GET',
+                url: '/gmatch/player/game/find',
+                dataType: 'json',
+                data: {
+                    'gid': '1', // 游戏ID
+                    'page.page': (more ? _page.curpage+1 : 1), // 页码
+                    'mname': $.trim(key)
+                },
+                success: function(data, ts, jqXHR){
+                    if(data.r == 1){
+                        data.page = _page;
+                        render(data.data, !!(Math.ceil(_page.total/_page.pagesize) - _page.curpage));
+                    }else{
+                        swal('', data.msg, 'error');
+                    }
+                },
+                error: function(jqXHR, ts, errorThrown){
+                    swal('', ts, 'error');
+                    /*
+                    _page = {
+                        pagesize: 20,
+                        total: 32,
+                        curpage: 1
+                    }
+                    render([{
+                        id:1, //赛站id
+                        createtime: '2015-09-03 10:32:51', //创建时间
+                        cnname:'天下第一', //游戏内中文名
+                        enname:'xxk', //游戏内英文名
+                        gamebest:'第一名', //最好成绩
+                        favourite:'联赛', //游戏偏好
+                        pid:34, //真实用户ID
+                        gid:1, // 游戏ID
+                        scorenum:12, //名次
+                        sname: '炉石黄金联赛天津站', //赛站名称
+                        lastsname: '炉石黄金联赛天津站' //最近参加的赛站名称
+                    },{
+                        id:1, //赛站id
+                        createtime: '2015-09-03 10:32:51', //创建时间
+                        cnname:'天下第一', //游戏内中文名
+                        enname:'xxk', //游戏内英文名
+                        gamebest:'第一名', //最好成绩
+                        favourite:'联赛', //游戏偏好
+                        pid:34, //真实用户ID
+                        gid:1, // 游戏ID
+                        scorenum:12, //名次
+                        sname: '炉石黄金联赛天津站', //赛站名称
+                        lastsname: '炉石黄金联赛天津站' //最近参加的赛站名称
+                    }], !!(Math.ceil(_page.total/_page.pagesize) - _page.curpage));
+                    */
+                }
+            });
+        }
+
+        function render(data, more){
+            var now = new Date().getTime();
+            if(more && _page.curpage!=1){
+                $('.list-more').remove();
+            }else{
+                $('.list-item, .list-tip, .list-more').remove();
+            }
+            var $m = $('.main');
+            var html = [];
+            for(var i=0; i<data.length; i++){
+                var u = data[i];
+                html.push(
+                    '<tr uid="', u.id, '">',
+                        '<td>', (u.cnname || u.enname), '</td>',
+                        '<td>', u.gamebest, '</td>',
+                        '<td>', u.lastsname, '</td>',
+                    '</tr>');
+            }
+
+            if(!data.length){
+                html.push(
+                    '<tr class="list-tip">',
+                        '<td colspan="3">好像有奇怪的东西混进来了...</td>',
+                    '</tr>');
+            }
+
+            $m.find('.list table tbody').append(html.join(''));
+
+            if(more){
+                $m.append('<div class="list-more">加载更多</div>');
+            }
+        }
+	</script>
+</html>

@@ -64,6 +64,12 @@
 		<constructor-arg name="dataSource" ref="pandaDataSource" />
 	</bean>
 	
-	<!-- <tx:annotation-driven mode="aspectj" transaction-manager="infoTransactionManager" /> -->
-
+	<!-- 事务管理器 -->
+	<bean id="txManager"
+	    class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	        <property name="dataSource" ref="pandaDataSource" />
+	</bean>
+	<!-- 事务注解驱动，标注@Transactional的类和方法将具有事务性 -->
+	<tx:annotation-driven transaction-manager="txManager" />
+	
 </beans>

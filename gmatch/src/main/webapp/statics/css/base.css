@@ -1,0 +1,174 @@
+@charset "utf-8";
+/** 清除内外边距 **/
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */ dl, dt, dd, ul, ol, li, /* list elements 列表元素 */ pre, /* text formatting elements 文本格式元素 */ form, fieldset, legend, button, input, textarea, /* form elements 表单元素 */ th, td /* table elements 表格元素 */ {
+	margin: 0;
+	padding: 0;
+}
+/** 默认字体 **/
+body, select, input, textarea, button {
+	font-family: 'Microsoft Yahei', Tahoma, Helvetica, Arial, '\5b8b\4f53', sans-serif;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #333;
+}
+html, body {
+	height: 100%;
+}
+/** border-box **/
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+/** 禁止局部高亮 **/
+html{
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-text-size-adjust: none;
+}
+/** iPhone按钮样式还原 **/
+input, select{
+	-webkit-appearance:none;
+}
+/** 默认背景色和字体颜色 **/
+body {
+    background-color: #eee;
+    color: #333;
+}
+textarea {resize: none;}
+a {text-decoration: none;}
+a:hover {text-decoration: none;}
+a:active {text-decoration: none;}
+a:link {text-decoration: none;}
+a:focus { outline: none; text-decoration: none; }
+/** 清除浮动 **/
+.clearfix:before, .clearfix:after {
+  display: table;
+  content: " ";
+}
+.clearfix:after { clear: both; }
+
+.l { float: left; }
+.r { float: right; }
+.mt12 { margin-top: 12px; }
+.mb4 { margin-bottom: 4px; }
+.mb16 { margin-bottom: 16px; }
+.mb20 { margin-bottom: 20px; }
+.mb35 { margin-bottom: 35px!important; }
+.blue { color: #00a1de; }
+.yellow { color: #ffa000; }
+
+/* sweetalert override */
+.sweet-alert { font-family: 'Microsoft Yahei', Tahoma, Helvetica, Arial, '\5b8b\4f53', sans-serif; }
+.sweet-overlay:focus { outline: none; }
+
+
+.main { padding-bottom: 68px; }
+.no1, .no2, .no3 {
+    position: relative;
+    line-height: 1;
+    padding-left: 20px;
+    display: inline-block;
+}
+.no1:before, .no2:before, .no3:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 14px;
+    height: 18px;
+    background-repeat: no-repeat;
+    background-image: url(../image/icons-medal.png);
+}
+.no1:before { background-position: 0 0; }
+.no2:before { background-position: -28px 0; }
+.no3:before { background-position: -56px 0; }
+.list-tip {
+    margin-top: 3em;
+    text-align: center;
+    color: grey;
+}
+.list-more {
+    padding: .4em 1em;
+    width: 6.4em;
+    line-height: 1;
+    margin: 0 auto;
+    color: #1baee1;
+    margin-top: 24px;
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid #1baee1;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.footer {
+	position: fixed;
+	bottom: 0;
+    width: 100%;
+	height: 56px;
+    background-color: #fff;
+    border-top: 1px solid #e4e4e4;
+}
+.footer a {
+    display: inline-block;
+    float: left;
+    width: 33.3%;
+    height: 100%;
+    color: #999;
+    text-align: center;
+    line-height: 1;
+    padding-top: 8px;
+}
+.footer a i {
+    display: block;
+    width: 31px;
+    height: 22px;
+    background-repeat: no-repeat;
+    background-image: url(../image/icons-toolbar.png);
+    margin: 0 auto 4px;
+}
+.footer a.btcenter { width: 33.4%; }
+.footer a i.icon-crown { background-position: 0 0; }
+.footer a i.icon-player { background-position: -62px 0; }
+.footer a i.icon-person { background-position: -124px 0; }
+.footer a i.icon-paper { background-position: -186px 0; }
+.footer a i.icon-medal { background-position: -248px 0; }
+.footer a i.icon-note { background-position: -310px 0; }
+.footer a i.icon-chart { background-position: -372px 0; }
+
+.footer a.light { color: #1baee1; }
+.footer a.light i.icon-crown { background-position: 0 -22px; }
+.footer a.light i.icon-player { background-position: -62px -22px; }
+.footer a.light i.icon-person { background-position: -124px -22px; }
+.footer a.light i.icon-paper { background-position: -186px -22px; }
+.footer a.light i.icon-medal { background-position: -248px -22px; }
+.footer a.light i.icon-note { background-position: -310px -22px; }
+.footer a.light i.icon-chart { background-position: -372px -22px; }
+
+@media screen and (-webkit-min-device-pixel-ratio: 2),
+    screen and (min--moz-device-pixel-ratio: 2),
+    screen and (-o-min-device-pixel-ratio: 2/1),
+    screen and (min-device-pixel-ratio: 2) {
+    .footer a i {
+        background-image: url(../image/icons-toolbar@2x.png);
+        background-size: auto 44px;
+    }
+    .no1:before, .no2:before, .no3:before {
+        background-image: url(../image/icons-medal@2x.png);
+        background-size: auto 18px;
+    }
+}
+@media screen and (-webkit-min-device-pixel-ratio: 3),
+    screen and (min--moz-device-pixel-ratio: 3),
+    screen and (-o-min-device-pixel-ratio: 3/1),
+    screen and (min-device-pixel-ratio: 3) {
+    .footer a i {
+        background-image: url(../image/icons-toolbar@3x.png);
+        background-size: auto 44px;
+    }
+    .no1:before, .no2:before, .no3:before {
+        background-image: url(../image/icons-medal@3x.png);
+        background-size: auto 18px;
+    }
+}
