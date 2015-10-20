@@ -76,4 +76,6 @@ public class HotSiteSql {
 				+ "from (select case when ha.pid1=2 then concat(ha.occupation1,'（',ha.cards1,'）') else concat(ha.occupation2,'（',ha.cards2,'）') end as occupation,"
 				+ "case  when ha.result='A' then ha.pid1 else ha.pid2 end as win_pid from hotagainst ha where ha.pid1=#{pId}  or ha.pid2=#{pId} )v)v1 "
 				+ "group by v1.occupation)v2 order by v2.win_rate desc limit #{pageable.offset},#{pageable.pageSize}";
+	
+	
 }

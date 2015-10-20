@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kfpanda.gmatch.bean.Player;
 import com.kfpanda.gmatch.mapper.PlayerMapper;
+import com.util.common.FormatUtil;
 
 @Repository
 public class PlayerBiz {
@@ -54,6 +55,8 @@ public class PlayerBiz {
 		java.math.BigDecimal winRateD = null;
 		for(int i=0; i<maxSize; i++){
 			map = dList.get(i);
+			if(map == null)
+				continue;
 			dataMap.put("battlewin", map.get("win_nums"));//场胜利场次
 			dataMap.put("battlelost", map.get("lost_nums"));//场失败场次
 			winRateD=  (java.math.BigDecimal)map.get("win_rate");
@@ -64,6 +67,8 @@ public class PlayerBiz {
 		maxSize = dList != null ? dList.size() : 0;
 		for(int i=0; i<maxSize; i++){
 			map = dList.get(i);
+			if(map == null)
+				continue;
 			dataMap.put("juwin", map.get("win_nums"));//局胜利场次
 			dataMap.put("julost", map.get("lost_nums"));//局失败场次
 			winRateD =  (java.math.BigDecimal)map.get("win_rate");
@@ -86,6 +91,20 @@ public class PlayerBiz {
 		}
 		dataMap.put("ocdata", ocList);
 		dataList.add(dataMap);
+		return dataList;
+	}
+	
+	/**
+	 * 游戏选手主要成就查询接口（接口 1.0.7）
+	 * @author 许小满  
+	 * @date Oct 21, 2015 12:31:06 AM
+	 */
+	public List<Map<String, Object>> gameDataAchiSearch(Long gId, Long pId, Pageable pageable){
+		List<Map<String, Object>> dataList = playerMapper.gameDataAchiSearch(gId, pId, pageable);
+		for(Map<String, Object> dataMap : dataList){
+			dataMap.put("result", FormatUtil.formatResult((Integer)dataMap.get("num"), (String)dataMap.get("result")));
+			dataMap.remove("num");
+		}
 		return dataList;
 	}
 }

@@ -41,4 +41,8 @@ public interface PlayerMapper {
     @Select(HotSiteSql.PLAYEROCRATE_SQL)
     List<Map<String, Object>> findOCRate(@Param("pId")Long pId, @Param("pageable")Pageable pageable);
     
+  //游戏选手主要成就查询接口（接口 1.0.7）
+    @Select(PlayerSql.PLAYEROCRATE_SQL)
+    List<Map<String, Object>> gameDataAchiSearch(@Param("gId")Long gId, @Param("pId")Long pId, @Param("pageable")Pageable pageable);
+    
 }

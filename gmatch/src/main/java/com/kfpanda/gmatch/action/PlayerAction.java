@@ -1,6 +1,7 @@
 package com.kfpanda.gmatch.action;
 
 import javax.annotation.Resource;
+
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.kfpanda.gmatch.biz.PlayerBiz;
 
 @Controller("playerAction")
@@ -47,6 +49,23 @@ public class PlayerAction extends BaseAction{
 			     @RequestParam(value = "pid") long pId,
 				@PageableDefaults(pageNumber=0, value=5, sort="win_rate=desc") Pageable pageable) {
 		return this.getResult(playerBiz.gamedataFind(pId,  pageable));
+	}
+	
+	/**
+	 * 游戏选手主要成就查询接口（接口 1.0.7）
+	 * @param gId 游戏ID
+	 * @param pid 游戏选手ID
+	 * @param pageable
+	 * @return
+	 * @author 许小满  
+	 * @date Oct 21, 2015 12:27:20 AM
+	 */
+	@RequestMapping(value = "/gamedata/achi")
+	public @ResponseBody Object gameDataAchiSearch(
+			     @RequestParam(value = "gid") long gId,
+			     @RequestParam(value = "pid") long pId,
+				@PageableDefaults(pageNumber=0, value=5, sort="createTime=desc") Pageable pageable) {
+		return this.getResult(playerBiz.gameDataAchiSearch(gId, pId, pageable));
 	}
 	
 }

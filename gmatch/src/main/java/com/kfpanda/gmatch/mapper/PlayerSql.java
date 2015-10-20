@@ -53,4 +53,9 @@ public class PlayerSql {
 		return sql;
 	}
 	
+	//游戏选手主要成就查询接口（接口 1.0.7）
+		public static final String PLAYEROCRATE_SQL = "SELECT h.name,h.result,hs.num,hs.createtime  "
+				+ "FROM `match` m INNER JOIN hotsite h on m.id=h.mid INNER JOIN hotsite_score hs on h.id=hs.hid "
+				+ "WHERE m.gid=#{gId} AND hs.pid=#{pId} ORDER BY hs.createtime desc limit #{pageable.offset},#{pageable.pageSize}";
+	
 }
