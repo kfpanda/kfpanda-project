@@ -71,4 +71,5 @@ public class HotSiteAction extends BaseAction{
 			) {
 		return this.getResult(hotSiteBiz.scoreFind(hId));
 	}
+	
 }

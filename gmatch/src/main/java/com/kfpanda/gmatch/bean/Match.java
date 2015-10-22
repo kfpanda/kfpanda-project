@@ -12,10 +12,12 @@ public class Match implements Serializable{
 	private String name;
 	private String holder;
 	private String size;
-	private Integer cycle;
+	private String cycle;
 	private String level;
 	private String type;
 	private String gId;
+	private String code;
+	private String intro;
 	
 	public Long getId() {
 		return id;
@@ -57,11 +59,11 @@ public class Match implements Serializable{
 		this.size = size;
 	}
 	
-	public Integer getCycle() {
+	public String getCycle() {
 		return cycle;
 	}
 	
-	public void setCycle(Integer cycle) {
+	public void setCycle(String cycle) {
 		this.cycle = cycle;
 	}
 	
@@ -89,6 +91,22 @@ public class Match implements Serializable{
 		this.gId = gId;
 	}
 	
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+	
+	public String getIntro() {
+		return intro;
+	}
+	
+	public void setIntro(String intro) {
+		this.intro = intro;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
