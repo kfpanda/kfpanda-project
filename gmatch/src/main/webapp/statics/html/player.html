@@ -93,6 +93,12 @@
 		});
 
         function query(key, more){
+
+            if(!more){
+                $('.list-item, .list-tip, .list-more').remove();
+                $('.main').find('.list table tbody').html('<tr class="list-tip"><td colspan="3">加载中...</td></tr>');
+            }
+
             $.ajax({
                 type: 'GET',
                 url: '/gmatch/player/game/find',

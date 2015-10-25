@@ -36,4 +36,7 @@ public interface HotSiteMapper {
     //通过名称查询选手姓名
     @Select(HotSiteSql.PLAYERBYNUM_SQL)
     List<String> findPlayerNameByNum(@Param("hId")Long hId, @Param("num")Integer num);
+    
+    @Select(HotSiteSql.FINDFROMID_SQL)
+    Map<String, Object> findById(Long id);
 }

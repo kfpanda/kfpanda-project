@@ -104,6 +104,10 @@
 		});
 
         function query(key, more){
+            if(!more){
+                $('.list-item, .list-tip, .list-more').remove();
+                $('.main').append('<div class="list-tip">加载中...</div>');
+            }
             $.ajax({
                 type: 'GET',
                 url: '/gmatch/hotsite/find',
@@ -123,7 +127,7 @@
                 },
                 error: function(jqXHR, ts, errorThrown){
                     swal('', ts, 'error');
-                    /**/
+                    /*
                     _page = {
                         pagesize: 20,
                         total: 32,
@@ -151,7 +155,7 @@
                         mtype: 'lt', //赛事类型 lt:擂台赛, jb：锦标赛
                         gid: 23 //游戏ID
                     }], !!(Math.ceil(_page.total/_page.pagesize) - _page.curpage));
-
+                    */
                 }
             });
         }

@@ -101,7 +101,7 @@
                 },
                 success: function(data, ts, jqXHR){
                     if(data.r == 1){
-                        render(data.data);
+                        render((data.data || [])[0]);
                     }else{
                         swal('', data.msg, 'error');
                     }

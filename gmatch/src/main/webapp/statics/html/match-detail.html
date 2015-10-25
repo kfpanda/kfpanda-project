@@ -112,15 +112,14 @@
             // 获取数据
             $.ajax({
                 type: 'GET',
-                url: '/gmatch/hotsite/detail',
+                url: '/gmatch/hotsite/info',
                 dataType: 'json',
                 data: {
                     'gid': '1', // 游戏ID
-                    'id': _id
+                    'hid': _id
                 },
                 success: function(data, ts, jqXHR){
                     if(data.r == 1){
-                        data.page = _page;
                         render(data.data);
                     }else{
                         swal('', data.msg, 'error');
@@ -128,7 +127,7 @@
                 },
                 error: function(jqXHR, ts, errorThrown){
                     swal('', ts, 'error');
-                    /**/
+                    /*
                     render({
                         id: 1, //赛站id
                         createtime: '2015-09-03 10:32:51', //赛站创建时间
@@ -139,7 +138,7 @@
                         playernum:34, //比赛人数
                         rule: '前三轮 bo3,决赛是征服赛制', // 比赛规则
                         registration: '本地报名', //报名方式
-                        bonus: '总奖金100000000W总奖金100000000W',// 比赛奖励
+                        bonus: ';冠军:1000RMB;亚军:500RMB;前128名:炉石传说黄金系列赛专属卡片;',// 比赛奖励
                         intro: '******',// 比赛介绍
                         result: '冠军-囚徒;亚军-安德罗妮;季军-秋日;殿军-融入', // 比赛结果
                         mid:323, //赛事ID
@@ -151,7 +150,7 @@
                         mtype: 'lt', //赛事类型 lt:擂台赛, jb：锦标赛
                         gid: 23 //游戏ID
                     });
-
+                    */
                 }
             });
 		});
@@ -208,23 +207,32 @@
                     '<div class="warp-title blue">比赛奖励</div>',
                     '<div class="warp-table">',
                         '<table class="prize" cellpadding=0 cellspacing=0>',
-                            '<tbody>',
+                            '<tbody>');
+            var bos = [];
+
+            try{
+                var bostr = m.bonus.replace(/^;/, '').replace(/;$/, '').split(';');
+                for(var i=0; i<bostr.length; i++){
+                    var ss = bostr[i].split(':');
+                    var io = {};
+                    io.key = ss[0];
+                    io.value = ss[1];
+                    bos.push(io);
+                }
+            }catch(e){ }
+
+            for(var i=0; i<bos.length; i++){
+                html.push(
                                 '<tr>',
-                                    '<td><span class="no1">冠军</span></td>',
-                                    '<td>50000 RMB</td>',
-                                '</tr>',
-                                '<tr>',
-                                    '<td><span class="no2">亚军</span></td>',
-                                    '<td>10000 RMB</td>',
-                                '</tr>',
-                                '<tr>',
-                                    '<td><span class="no3">季军</span></td>',
-                                    '<td>5000 RMB</td>',
-                                '</tr>',
-                                '<tr>',
-                                    '<td>前128名</td>',
-                                    '<td>炉石传说黄金系列赛专属卡片</td>',
-                                '</tr>',
+                                    '<td>',
+                                        bos[i].key.toString()
+                                            .replace(/^冠军$/, '<span class="no1">冠军</span>')
+                                            .replace(/^亚军/, '<span class="no2">亚军</span>')
+                                            .replace(/^季军/, '<span class="no3">季军</span>'),'</td>',
+                                    '<td>', bos[i].value, '</td>',
+                                '</tr>');
+            }
+            html.push(
                             '</tbody>',
                         '</table>',
                     '</div>',

@@ -72,4 +72,16 @@ public class HotSiteAction extends BaseAction{
 		return this.getResult(hotSiteBiz.scoreFind(hId));
 	}
 	
+	/**
+	 * 赛站详情查询接口（接口：1.0.9）
+	 * @author kfpanda
+	 * @date 2015年10月24日 下午6:37:55
+	 */
+	@RequestMapping(value = "/info")
+	public @ResponseBody Object info(
+			@RequestParam(value = "hid") long hId
+			) {
+		return this.getResult(hotSiteBiz.findById(hId));
+	}
+	
 }

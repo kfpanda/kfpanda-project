@@ -36,6 +36,10 @@ public class HotSiteBiz {
 		return hotSiteMapper.find(gId, startDate, endDate, mName, pageable);
 	}
 	
+	public Map<String, Object> findById(Long id){
+		return hotSiteMapper.findById(id);
+	}
+	
 	/**
 	 * 赛站选手查询
 	 * @param hId 赛站id 

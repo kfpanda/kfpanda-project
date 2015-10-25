@@ -93,31 +93,28 @@
                 error: function(jqXHR, ts, errorThrown){
                     swal('', ts, 'error');
                     /*
-                    render({
-                        "id": 2,//游戏选手id
-                        "mdata": [
-                            {
-                                "name": "2015DreamHack夏季赛", //赛事名称
-                                "time": 1441590292497, //日期
-                                "result": '冠军' //成绩
-                            },
-                            {
-                                "name": "2014DreamHack夏季赛", //赛事名称
-                                "time": 1441590292497, //日期
-                                "result": '八强' //成绩
-                            },
-                            {
-                                "name": "2016DreamHack夏季赛", //赛事名称
-                                "time": 1441590292497, //日期
-                                "result": '八强' //成绩
-                            },
-                            {
-                                "name": "2013DreamHack夏季赛", //赛事名称
-                                "time": 1441590292497, //日期
-                                "result": '八强' //成绩
-                            }
-                        ]
-                    });
+                    render([
+                        {
+                            "createtime": 1441590292497, //日期
+                            "name": "2015DreamHack夏季赛", //赛事名称
+                            "result": '冠军' //成绩
+                        },
+                        {
+                            "createtime": 1441590292497, //日期
+                            "name": "2014DreamHack夏季赛", //赛事名称
+                            "result": '八强' //成绩
+                        },
+                        {
+                            "createtime": 1441590292497, //日期
+                            "name": "2016DreamHack夏季赛", //赛事名称
+                            "result": '八强' //成绩
+                        },
+                        {
+                            "createtime": 1441590292497, //日期
+                            "name": "2013DreamHack夏季赛", //赛事名称
+                            "result": '八强' //成绩
+                        }
+                    ]);
                     */
                 }
             });
@@ -140,14 +137,14 @@
                 '<div class="list">',
                     '<table cellpadding=0 cellspacing=0>',
                         '<tbody>');
-            for(var i=0; i<m.mdata.length; i++){
-                var mi = m.mdata[i];
+            for(var i=0; i<m.length; i++){
+                var mi = m[i];
                 html.push(
                             '<tr>',
-                                '<td>', fn.format(new Date(mi.time), 'yyyy.MM'), '</td>',
+                                '<td>', fn.format(new Date(mi.createtime), 'yyyy.MM'), '</td>',
                                 '<td>', mi.name, '</td>',
                                 '<td class="yellow">',
-                                    mi.result
+                                    mi.result.toString()
                                         .replace(/^冠军$/, '<span class="no1">冠军</span>')
                                         .replace(/^亚军/, '<span class="no2">亚军</span>')
                                         .replace(/^季军/, '<span class="no3">季军</span>'),
