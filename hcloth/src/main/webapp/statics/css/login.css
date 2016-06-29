@@ -1,0 +1,100 @@
+@charset "utf-8";
+body {
+	background-image: url(../image/geometry-dark.jpg);
+	background-position: 0 0;
+	background-size: 100% 100%;
+	background-color: #1a2c38;
+}
+.logo {
+	height: 108px;
+	margin: 84px auto 64px;
+	background-image: url(../image/fingerprint.png);
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.form {
+	width: 80%;
+	margin: 0 auto;
+}
+.form .form-control {
+	margin-bottom: 15px;
+}
+.form .form-control .input {
+	outline: none;
+	font-size: 16px;
+	background-color: transparent;
+	display: block;
+	width: 100%;
+	border: none;
+	border-bottom: 1px solid #44556a;
+	padding: 14px 14px 14px 36px;
+	color: white;
+	border-radius: 0;
+}
+.form .form-control .button {
+	outline: none;
+	font-size: 20px;
+	display: block;
+	width: 100%;
+	border: none;
+	color: white;
+	background-color: #1baee1;
+	line-height: 1;
+	padding: .75em;
+}
+.form .form-control .a {
+	font-size: 14px;
+	color: white;
+	line-height: 1;
+}
+input.icon {
+	background-position: center left;
+	background-repeat: no-repeat;
+}
+input.icon-user {
+	background-image: url(../image/icon/icon-user.png);
+}
+input.icon-lock {
+	background-image: url(../image/icon/icon-lock.png);
+}
+#forget {
+	color: #44556a;
+}
+#register {
+	color: #28a7e9;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 2),
+    screen and (min--moz-device-pixel-ratio: 2),
+    screen and (-o-min-device-pixel-ratio: 2/1),
+    screen and (min-device-pixel-ratio: 2) {
+	.logo {
+		background-image: url(../image/fingerprint@2x.png);
+        background-size: auto 108px;
+    }
+	input.icon-user {
+		background-image: url(../image/icon/icon-user@2x.png);
+        background-size: auto 23px;
+	}
+	input.icon-lock {
+		background-image: url(../image/icon/icon-lock@2x.png);
+        background-size: auto 23px;
+	}
+}
+@media screen and (-webkit-min-device-pixel-ratio: 3),
+    screen and (min--moz-device-pixel-ratio: 3),
+    screen and (-o-min-device-pixel-ratio: 3/1),
+    screen and (min-device-pixel-ratio: 3) {
+	.logo {
+		background-image: url(../image/fingerprint@3x.png);
+        background-size: auto 108px;
+    }
+	input.icon-user {
+		background-image: url(../image/icon/icon-user@3x.png);
+        background-size: auto 23px;
+	}
+	input.icon-lock {
+		background-image: url(../image/icon/icon-lock@3x.png);
+        background-size: auto 23px;
+	}
+}

@@ -1,0 +1,121 @@
+@charset "utf-8";
+.search {
+    margin: 12px 12px 0;
+    position: relative;
+    height: auto;
+}
+.search input {
+    padding: 0 40px 0 .8em;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    color: #5d6164;
+    border: none;
+    outline: none;
+}
+.search em {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 22px;
+    background-image: url(../image/icon/icon-search.png);
+}
+.list-item {
+    background-color: #fff;
+    padding: 14px 5%;
+    margin-top: 12px;
+}
+.list-item a {
+    color: #666;
+}
+.list-item .title-text {
+    font-size: 16px;
+    height: 22px;
+    line-height: 22px;
+    margin: 0 60px;
+    text-align: center;
+    color: #00a1de;
+    font-weight: bold;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.list-item .title-status {
+    float: right;
+    width: 60px;
+    height: 22px;
+    color: #fff;
+    text-align: center;
+    line-height: 22px;
+    border-radius: 4px;
+    background-color: #f6d13b;
+}
+.list-item .title-status-ing {
+    background-color: #00a1de;
+}
+.list-item .title-status-over {
+    background-color: #999;
+}
+.list-item .item-date {
+    color: #1baee1;
+    padding-left: 22px;
+    background-image: url(../image/icon/icon-clock.png);
+    background-repeat: no-repeat;
+    background-position: center left;
+}
+.list-item .item-place {
+    float: right;
+    height: 22px;
+    line-height: 22px;
+}
+.list-item .item-tip {
+    width: 50%;
+    height: 18px;
+    line-height: 18px;
+    font-size: 16px;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.list-item .item-prize {
+    float: right;
+    width: 50%;
+    height: 18px;
+    line-height: 18px;
+    text-align: right;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 2),
+    screen and (min--moz-device-pixel-ratio: 2),
+    screen and (-o-min-device-pixel-ratio: 2/1),
+    screen and (min-device-pixel-ratio: 2) {
+    .list-item .item-date {
+        background-image: url(../image/icon/icon-clock@2x.png);
+        background-size: auto 14px;
+    }
+    .search em {
+        background-image: url(../image/icon/icon-search@2x.png);
+    }
+}
+@media screen and (-webkit-min-device-pixel-ratio: 3),
+    screen and (min--moz-device-pixel-ratio: 3),
+    screen and (-o-min-device-pixel-ratio: 3/1),
+    screen and (min-device-pixel-ratio: 3) {
+    .list-item .item-date {
+        background-image: url(../image/icon/icon-clock@3x.png);
+        background-size: auto 14px;
+    }
+    .search em {
+        background-image: url(../image/icon/icon-search@3x.png);
+    }
+}

@@ -1,0 +1,74 @@
+@charset "utf-8";
+.warp {
+    background-color: #fff;
+    padding: 3px 2% 4px;
+    margin-top: 12px;
+}
+.warp .warp-title {
+    padding: .3em .8em;
+    font-size: 20px;
+    border-bottom: 1px solid #cecece;
+}
+.warp .warp-table {
+    /*padding: 0 1em;*/
+}
+.warp .warp-table table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+.rule td:nth-child(2n+1) {
+    color: #00a1dd;
+    font-size: 16px;
+    width: 5.2em;
+    padding-left: .8em;
+}
+.rule td:nth-child(2n) {
+    padding-right: .8em;
+    text-align: right;
+}
+.rule td {
+    padding: 12px 0;
+}
+.rule td span {
+    display: inline-block;
+    text-align: center;
+}
+.rule td:nth-child(2) {
+    border-right: 1px solid #cecece;
+}
+
+.prize {
+    table-layout: auto!important;
+}
+.prize td:first-child {
+    color: #202a36;
+    font-size: 16px;
+    padding-left: .8em;
+    line-height: 42px;
+}
+.prize td:last-child {
+    font-size: 16px;
+    text-align: right;
+    font-weight: bold;
+    color: #ffa000;
+}
+.prize td span {
+    display: inline-block;
+}
+
+.intro {
+    background-color: #fff;
+    padding: 6px 5%;
+    margin-top: 12px;
+	background-image: url(../image/geometry-light.jpg);
+	background-position: 0 0;
+	background-size: 100% auto;
+	background-color: #46b4d7;
+}
+.intro .intro-title {
+    line-height: 42px;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+}
