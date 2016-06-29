@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+        <meta http-equiv="Cache-Control" content="no-siteapp" />
+        <meta name="keywords" content="cloth" />
+        <meta name="description" content="fine cloth" />
+        <meta name="author" content="hain,hain1orz@163.com" />
+        <meta name="robots" content="index,follow" />
+        <title>Parallel</title>
+		<!--[if lt IE 9]>
+			<script type="text/javascript" src="../../js/html5shiv.min.js"></script>
+		<![endif]-->
+        <link type="text/css" rel="stylesheet" href="../../css/base.css" />
+        <link type="text/css" rel="stylesheet" href="../../css/detail.css" />
+    </head>
+    <body>
+        <div class="nav clearfix">
+            <a class="logo l" href="../en/index.html"></a>
+            <ul class="menu l clearfix">
+                <li>
+                    About
+                    <div class="submenu">
+                        <ul class="menu clearfix">
+                            <li><a href="javascript:;">Profile</a></li>
+                            <li><a href="javascript:;">News</a></li>
+                            <li><a href="javascript:;">Project reference</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="active">
+                    Collection
+                    <div class="submenu">
+                        <ul class="menu clearfix">
+                            <li class="space">About</li>
+                            <li><a href="javascript:;">Curtains</a></li>
+                            <li><a href="javascript:;">Upholatery</a></li>
+                            <li><a href="javascript:;">Wallpaper</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="javascript:;">Contact</a></li>
+            </ul>
+            <div class="lang r">
+                <a href="../en/index.html">EN</a><i></i><a href="../zh/index.html">CN</a>
+            </div>
+            <div class="search r">
+                <form action="./collection.html" method="get">
+                    <button type="submit"></button>
+                    <input type="text" name="keywords" value="" placeholder="Search" />
+                </form>
+            </div>
+        </div>
+        <div class="pos-nav">
+            <div class="c-name">-</div>
+            <div class="c-split"></div>
+            <pre class="c-des"><!--design : Parallel team
+composition : 100% Trevira CS
+width : 300cm
+weight : 300g/lin.m
+country of origin : Germany
+light resistance : ≥4 (1-5 GB/T19817)
+flammability : GB 8624 B1  GB 20286 <span>阻燃1级</span>
+shrinkage : 1%
+wash load : Half
+colour : Exact colour matching cannot be
+guaranteed between batches
+environment : Reduced environmental impact
+--></pre>
+        </div>
+        <div class="cloth">
+            <!--<a class="back" href="./series.html?series=breath"></a>-->
+            <div onselectstart="return false;" class="text-tip">Loading...</div>
+        </div>
+		<script type="text/javascript" src="../../js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="../../js/fn.js"></script>
+		<script type="text/javascript">
+            $(function($){
+                $(window).on('resize', function(e){
+                    calcMt();
+                });
+                calcMt();
+                
+                query(queryUrlParam('clid'));
+            });
+            
+            function calcMt(){
+                var h = $('body').height() - 50;
+                var ih = $('.pos-nav').height();
+                if(h>ih){
+                    $('.pos-nav').css('margin-top', (h-ih)/2 + 'px');
+                }else{
+                    $('.pos-nav').css('margin-top', '0');
+                }
+            }
+            // Query
+            var query = function(clid){
+                if(!clid){
+                    $('.text-tip').text('"Invalid query."');
+                    return;
+                }
+                $.ajax({
+                    url: '/hcloth/cloth/info',
+                    type: 'GET',
+                    dataType: 'json',
+                    data: { clid : clid },
+                    success: function(data, ts, jqXHR) {
+                        if(/^1$/i.test(data.r)) {
+                            render(data.data);
+                        } else {
+                            $('.text-tip').text('"' + (data.msg || 'Error.') + '"');
+                        }
+                    },
+                    error: function(xhr, ts, errorThrown){
+                        $('.text-tip').text('"Error."');
+                    }
+                });
+            };
+            var render = function(data){
+                if(!data){
+                    $('.text-tip').text('"There\'s nothing here."');
+                }else{
+                    var html = [];
+                    $('.c-name').text(data.name || 'No Name');
+                    $('.cloth').css('background-image', 'url(' + data.img + ')').html('<a class="back" href="./series.html?cid=' + data.cid +'&name=', data.name, '"></a>');
+                    html.push('design : ' + data.design);
+                    html.push('composition : ' + data.composition);
+                    html.push('width : ' + data.width);
+                    html.push('weight : ' + data.weight);
+                    html.push('country of origin : ' + data.country);
+                    html.push('light resistance : ' + data.resistance);
+                    html.push('flammability : ' + data.flammability);
+                    html.push('shrinkage : ' + data.shrinkage);
+                    html.push('wash load : ' + data.washload);
+                    html.push('colour : ' + data.colour);
+                    html.push('environment : ' + data.environment);
+                    $('.c-des').html(html.join('\n'));
+                }
+            };
+        </script>
+    </body>
+</html>

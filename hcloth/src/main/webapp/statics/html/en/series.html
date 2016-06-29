@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+        <meta http-equiv="Cache-Control" content="no-siteapp" />
+        <meta name="keywords" content="cloth" />
+        <meta name="description" content="fine cloth" />
+        <meta name="author" content="hain,hain1orz@163.com" />
+        <meta name="robots" content="index,follow" />
+        <title>Parallel</title>
+		<!--[if lt IE 9]>
+			<script type="text/javascript" src="../../js/html5shiv.min.js"></script>
+		<![endif]-->
+        <link type="text/css" rel="stylesheet" href="../../css/base.css" />
+        <link type="text/css" rel="stylesheet" href="../../css/series.css" />
+    </head>
+    <body>
+        <div class="nav clearfix">
+            <a class="logo l" href="../en/index.html"></a>
+            <ul class="menu l clearfix">
+                <li>
+                    About
+                    <div class="submenu">
+                        <ul class="menu clearfix">
+                            <li><a href="javascript:;">Profile</a></li>
+                            <li><a href="javascript:;">News</a></li>
+                            <li><a href="javascript:;">Project reference</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="active">
+                    Collection
+                    <div class="submenu">
+                        <ul class="menu clearfix">
+                            <li class="space">About</li>
+                            <li><a href="javascript:;">Curtains</a></li>
+                            <li><a href="javascript:;">Upholatery</a></li>
+                            <li><a href="javascript:;">Wallpaper</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="javascript:;">Contact</a></li>
+            </ul>
+            <div class="lang r">
+                <a href="../en/index.html">EN</a><i></i><a href="../zh/index.html">CN</a>
+            </div>
+            <div class="search r">
+                <form action="./collection.html" method="get">
+                    <button type="submit"></button>
+                    <input type="text" name="keywords" value="" placeholder="Search" />
+                </form>
+            </div>
+        </div>
+        <div class="pos-nav">
+            <div class="pos-c">
+                <div id="category" class="pos-nav-w">-</div>
+            </div>
+        </div>
+        <div class="pos">
+            <ul class="lumps">
+                <li onselectstart="return false;" class="text-tip">Loading...</li>
+                <!--
+                <li onselectstart="return false;">
+                    <a href="./detail.html?id=breath01">
+                        <img src="../../img/lump/l02.png" />
+                        <span>Breath 001</span>
+                    </a>
+                </li>
+                <li onselectstart="return false;">
+                    <a href="./detail.html?id=breath01">
+                        <img src="../../img/lump/l01.png" />
+                        <span>Breath 001</span>
+                    </a>
+                </li>
+                <li onselectstart="return false;">
+                    <a href="./detail.html?id=breath01">
+                        <img src="../../img/lump/l02.png" />
+                        <span>Breath 001</span>
+                    </a>
+                </li>
+                <li onselectstart="return false;">
+                    <a href="./detail.html?id=breath01">
+                        <img src="../../img/lump/l02.png" />
+                        <span>Breath 001</span>
+                    </a>
+                </li>
+                <li onselectstart="return false;">
+                    <a href="./detail.html?id=breath01">
+                        <img src="../../img/lump/l02.png" />
+                        <span>Breath 001</span>
+                    </a>
+                </li>
+                <li onselectstart="return false;">
+                    <a href="./detail.html?id=breath01">
+                        <img src="../../img/lump/l02.png" />
+                        <span>Breath 001</span>
+                    </a>
+                </li>
+                 -->
+            </ul>
+        </div>
+		<script type="text/javascript" src="../../js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="../../js/fn.js"></script>
+		<script type="text/javascript">
+            $(function($){
+                $(window).on('resize', function(e){
+                    calcMt();
+                });
+                $('.pos').width($('body').width() - 190); // 初始化宽度
+                
+                // return;
+                calcMt();
+                $('.pos').animate({ 
+                    left: '190px'
+                }, 500, function(){
+                    $('.pos').width('auto');
+                    $('body').css('overflow', 'auto');
+                });
+                // Show Name
+                $('#category').text(queryUrlParam('name') || 'No Name');
+                query(queryUrlParam('cid'));
+            });
+            
+            function calcMt(){
+                var h = $('.pos').height();
+                var ih = $('.lumps').height();
+                if(h>ih){
+                    $('.lumps').css('margin-top', (h-ih)/2 + 'px');
+                }else{
+                    $('.lumps').css('margin-top', '0');
+                }
+            }
+            // Query
+            var query = function(cid){
+                if(!cid){
+                    $('.text-tip').text('"Invalid query."');
+                    return;
+                }
+                $.ajax({
+                    url: '/hcloth/cloth/list',
+                    type: 'GET',
+                    dataType: 'json',
+                    data: { cid : cid },
+                    success: function(data, ts, jqXHR) {
+                        if(/^1$/i.test(data.r)) {
+                            render(data.data || []);
+                        } else {
+                            $('.text-tip').text('"' + (data.msg || 'Error.') + '"');
+                        }
+                    },
+                    error: function(xhr, ts, errorThrown){
+                        $('.text-tip').text('"Error."');
+                    }
+                });
+            };
+            // Render
+            var render = function(data){
+                var html = [];
+                if(data.length < 1){
+                    html.push('<li onselectstart="return false;" class="text-tip">"There\'s nothing here."</li>');
+                }else{
+                    for(var i=0; i<data.length; i++){
+                        var d = data[i];
+                        html.push(
+                            '<li onselectstart="return false;">',
+                                '<a href="./detail.html?clid=', d.id, '">',
+                                    '<img src="', d.img, '" />',
+                                    '<span>', d.name, '</span>',
+                                '</a>',
+                            '</li>');
+                    }
+                }
+                $('.lumps').html(html.join(''));
+            };
+        </script>
+    </body>
+</html>

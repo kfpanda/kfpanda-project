@@ -69,4 +69,7 @@ insert into cloth(cid,name,img,design,composition,width,weight,country,resistanc
 insert into cloth(cid,name,img,design,composition,width,weight,country,resistance,flammability,shrinkage,washload,colour,environment) select id,'Spring 693','spring 693.JPG','Parallel team','100% Trevira CS','330cm','623g/lin.m','Italy',' ≥ 6 (1-8  GB/T19817, eqv ISO105)','GB 8624-2012 B1 GB 20286 阻燃1级','0.01',' Half','Exact colour matching cannot be guaranteed between batches','330cm' from category where category='Spring';
 
 
-UPDATE cloth SET img=CONCAT('/hcloth-imgs/', img); 
+UPDATE cloth SET img=CONCAT('/hcloth-imgs/', img);
+
+UPDATE category SET `name`=REPLACE(`name`,' ','_'),`category`=REPLACE(`category`,' ','_');
+UPDATE cloth SET `name`=REPLACE(`name`,' ','_'),`img`=REPLACE(`img`,' ','_'),`country`=TRIM(`country`),`resistance`=TRIM(`resistance`),`washload`=TRIM(`washload`);

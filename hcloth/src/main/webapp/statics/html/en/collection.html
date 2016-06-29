@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+        <meta http-equiv="Cache-Control" content="no-siteapp" />
+        <meta name="keywords" content="cloth" />
+        <meta name="description" content="fine cloth" />
+        <meta name="author" content="hain,hain1orz@163.com" />
+        <meta name="robots" content="index,follow" />
+        <title>Parallel</title>
+		<!--[if lt IE 9]>
+			<script type="text/javascript" src="../../js/html5shiv.min.js"></script>
+		<![endif]-->
+        <link type="text/css" rel="stylesheet" href="../../css/base.css" />
+        <link type="text/css" rel="stylesheet" href="../../css/collection.css" />
+    </head>
+    <body>
+        <div class="nav clearfix">
+            <a class="logo l" href="../en/index.html"></a>
+            <ul class="menu l clearfix">
+                <li>
+                    About
+                    <div class="submenu">
+                        <ul class="menu clearfix">
+                            <li><a href="javascript:;">Profile</a></li>
+                            <li><a href="javascript:;">News</a></li>
+                            <li><a href="javascript:;">Project reference</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="active">
+                    Collection
+                    <div class="submenu">
+                        <ul class="menu clearfix">
+                            <li class="space">About</li>
+                            <li><a href="javascript:;">Curtains</a></li>
+                            <li><a href="javascript:;">Upholatery</a></li>
+                            <li><a href="javascript:;">Wallpaper</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="javascript:;">Contact</a></li>
+            </ul>
+            <div class="lang r">
+                <a href="../en/index.html">EN</a><i></i><a href="../zh/index.html">CN</a>
+            </div>
+            <div class="search r">
+                <form action="./collection.html" method="get">
+                    <button type="submit"></button>
+                    <input type="text" name="keywords" value="" placeholder="Search" />
+                </form>
+            </div>
+        </div>
+        <div class="pos">
+            <div class="pos-c">
+                <div class="pos-w">
+                    <div class="prev" pos="-1"></div>
+                    <div class="lumps">
+                        <div class="text-tip">Loading...</div>
+                        <!--
+                        <ul id="lumps" class="clearfix" style="width:2750px;">
+                            <li onselectstart="return false;">
+                                <a href="./series.html?series=breath">
+                                    <img src="../../img/lump/l01.png" />
+                                    <span>Breath</span>
+                                </a>
+                            </li>
+                            <li onselectstart="return false;">
+                                <a href="./series.html?series=breath">
+                                    <img src="../../img/lump/l02.png" />
+                                    <span>Closer</span>
+                                </a>
+                            </li>
+                            <li onselectstart="return false;">
+                                <a href="./series.html?series=breath">
+                                    <img src="../../img/lump/l03.png" />
+                                    <span>Crystal</span>
+                                </a>
+                            </li>
+                            <li onselectstart="return false;">
+                                <a href="./series.html?series=breath">
+                                    <img src="../../img/lump/l04.png" />
+                                    <span>Glint</span>
+                                </a>
+                            </li>
+                            <li onselectstart="return false;">
+                                <a href="./series.html?series=breath">
+                                    <img src="../../img/lump/l05.png" />
+                                    <span>Honeycomb</span>
+                                </a>
+                            </li>
+                            <li onselectstart="return false;">
+                                <a href="./series.html?series=breath">
+                                    <img src="../../img/lump/l06.png" />
+                                    <span>Linen cs</span>
+                                </a>
+                            </li>
+                            <li onselectstart="return false;">
+                                <a href="./series.html?series=breath">
+                                    <img src="../../img/lump/l07.png" />
+                                    <span>Mild</span>
+                                </a>
+                            </li>
+                            <li onselectstart="return false;">
+                                <a href="./series.html?series=breath">
+                                    <img src="../../img/lump/l08.png" />
+                                    <span>Moonlight</span>
+                                </a>
+                            </li>
+                            <li onselectstart="return false;">
+                                <a href="./series.html?series=breath">
+                                    <img src="../../img/lump/l09.png" />
+                                    <span>Presence</span>
+                                </a>
+                            </li>
+                            <li onselectstart="return false;">
+                                <a href="./series.html?series=breath">
+                                    <img src="../../img/lump/l10.png" />
+                                    <span>Ripple</span>
+                                </a>
+                            </li>
+                            <li onselectstart="return false;">
+                                <a href="./series.html?series=breath">
+                                    <img src="../../img/lump/l11.png" />
+                                    <span>Spring</span>
+                                </a>
+                            </li>
+                        </ul>
+                         -->
+                    </div>
+                    <div class="next" pos="1"></div>
+                </div>
+            </div>
+        </div>
+		<script type="text/javascript" src="../../js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="../../js/fn.js"></script>
+		<script type="text/javascript">
+            var _timer;
+            
+            $(function($){
+                query();
+            });
+            
+            var autoScroll = function(dir){
+                var $ul = $('#lumps');
+                var num = $ul.find('li').length;
+                var l = -1*(num*250-$ul.parent().width());
+                var start = parseFloat($ul.css('left'), 10);
+                var end = dir > 0 ? l : 0;
+                var abs = Math.abs(end - start);
+                clearTimeout(_timer);
+                $ul.stop().animate({ 
+                    left: end + 'px'
+                }, -1*abs*num*500/l);
+            };
+            // Query
+            var query = function(){
+                $.ajax({
+                    url: '/hcloth/category/list',
+                    type: 'GET',
+                    dataType: 'json',
+                    data: { keywords : queryUrlParam('keywords') },
+                    success: function(data, ts, jqXHR) {
+                        if(/^1$/i.test(data.r)) {
+                            render(data.data || []);
+                        } else {
+                            $('.text-tip').text('"' + (data.msg || 'Error.') + '"');
+                        }
+                    },
+                    error: function(xhr, ts, errorThrown){
+                        $('.text-tip').text('"Error."');
+                    }
+                });
+            };
+            // Render
+            var render = function(data){
+                var html = [];
+                if(data.length < 1){
+                    html.push('<div class="text-tip">"There\'s nothing here."</div>');
+                }else{
+                    html.push('<ul id="lumps" class="clearfix" style="width:', 250*data.length, 'px;">');
+                    for(var i=0; i<data.length; i++){
+                        var d = data[i];
+                        html.push(
+                            '<li onselectstart="return false;">',
+                                '<a href="./series.html?cid=', d.id, '&name=', d.name, '>',
+                                    '<img src="../../img/lump/l01.png" />',
+                                    '<span>', d.name, '</span>',
+                                '</a>',
+                            '</li>');
+                    }
+                    html.push('</ul>');
+                    // Event
+                    $('.prev, .next').hover(
+                        function(e){
+                            var dir = parseInt($(this).attr('pos'), 10);
+                            autoScroll(dir);
+                        },
+                        function(e){
+                            _timer = setTimeout(function(){
+                                $('#lumps').stop();
+                            }, 350);
+                        }
+                    );
+                }
+                $('.lumps').html(html.join(''));
+            };
+        </script>
+    </body>
+</html>

@@ -29,5 +29,9 @@ public class CategoryBiz {
 	public List<Category> findAll(){
 		return categoryMapper.findAll();
 	}
+
+	public Category findByCategory(String category){
+		return categoryMapper.findByCategory(category);
+	}
 	
 }

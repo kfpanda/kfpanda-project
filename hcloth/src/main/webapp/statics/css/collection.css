@@ -1,0 +1,88 @@
+@charset "utf-8";
+.pos {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-width: 1200px;
+    height: 100%;
+    overflow: hidden;
+    min-height: 370px;
+}
+.pos .pos-c {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+}
+.pos .pos-c .pos-w {
+    position: relative;
+    top: -160px;
+    left: -50%;
+    width: 1120px;
+    margin: 0 auto;
+}
+.prev {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 60px;
+    height: 200px;
+    background: url('../img/arw-l.png') center no-repeat;
+    cursor: pointer;
+}
+.next {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 60px;
+    height: 200px;
+    background: url('../img/arw-r.png') center no-repeat;
+    cursor: pointer;
+}
+.lumps {
+    margin: 0 auto;
+    width: 1000px;
+    height: 320px;
+    overflow: hidden;
+    position: relative;
+}
+.lumps .text-tip {
+    line-height: 320px;
+    width: 100%;
+    text-align: center;
+}
+.lumps ul {
+    position: absolute;
+    left: 0;
+    /* transition: left .2s; */
+}
+.lumps ul li {
+    float: left;
+    display: block;
+    width: 200px;
+    margin: 0 25px;
+    padding-top: 60px;
+    moz-user-select: -moz-none;
+    -moz-user-select: none;
+    -o-user-select:none;
+    -khtml-user-select:none;
+    -webkit-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+.lumps ul li img {
+    display: block;
+    border: none;
+    width: 200px;
+    height: 200px;
+}
+.lumps ul li span {
+    display: block;
+    margin-top: 44px;
+    font-size: 12px;
+    line-height: 16px;
+    color: #fff;
+    text-align: center;
+	font-family: Avenir Medium;
+}

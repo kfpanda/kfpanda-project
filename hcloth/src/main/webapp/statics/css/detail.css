@@ -1,0 +1,73 @@
+@charset "utf-8";
+.pos-nav {
+    padding-left: 100px;
+    width: 560px;
+	font-family: Avenir Medium;
+    font-size: 16px;
+    line-height: 24px;
+    color: #fff;
+}
+.pos {
+    position: absolute;
+    top: 50px;
+    left: 560px;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    min-width: 1010px;
+}
+.pos-c {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+}
+.c-name {
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 16px;
+}
+.c-split {
+    border-top: 1px solid #727171;
+    width: 14px;
+    height: 1px;
+    margin-bottom: 22px;
+}
+.c-des {
+    color: #727171;
+    font-size: 12px;
+    line-height: 24px;
+    font-family: Avenir Light;
+}
+.c-des span {
+    font-family: FZLanTingXH;
+}
+.cloth {
+    position: absolute;
+    top: 50px;
+    left: 560px;
+    right: 0;
+    bottom: 0;
+    min-width: 640px;
+    min-height: 352px;
+    background: #f0f0f0 no-repeat top left;
+    background-size: cover;
+    text-align: right;
+}
+.cloth div.text-tip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    text-align: center;
+    height: 36px;
+    line-height: 36px;
+}
+.back {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background: url(../img/close.png) center no-repeat;
+}

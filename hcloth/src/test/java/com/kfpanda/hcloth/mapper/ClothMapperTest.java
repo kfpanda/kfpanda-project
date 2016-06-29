@@ -55,7 +55,7 @@ public class ClothMapperTest {
 	@Test
 	public void findOne(){
 		
-		Cloth cloth = clothMapper.findOne(new Long(1));
+		Map<String, Object> cloth = clothMapper.findOne(new Long(1));
 		Assert.assertTrue(cloth != null);
 	}
 	

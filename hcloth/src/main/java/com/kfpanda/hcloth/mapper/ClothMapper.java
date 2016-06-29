@@ -17,7 +17,7 @@ public interface ClothMapper {
     int deleteById(Long id);
     
     @Select(ClothSql.FINDBYID_SQL)
-	Cloth findOne(Long id);
+	Map<String, Object> findOne(Long id);
     
     @Select(ClothSql.FINDBYCID_SQL)
     List<Map<String, Object>> findByCID(@Param("cId")Long cId);

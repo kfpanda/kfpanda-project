@@ -24,7 +24,7 @@ public class ClothBiz {
 		return clothMapper.save(cloth);
 	}
 	
-	public Cloth findOne(Long id){
+	public Map<String, Object> findOne(Long id){
 		return clothMapper.findOne(id);
 	}
 	

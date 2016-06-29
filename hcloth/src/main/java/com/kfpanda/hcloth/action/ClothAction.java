@@ -21,11 +21,11 @@ public class ClothAction extends BaseAction{
 	
 	@RequestMapping(value = "/list")
 	public @ResponseBody Object list(@RequestParam("cid")Long cId) {
-		return this.getResult(clothBiz.findByCID(cId));
+		return this.getResult(clothBiz.findByCID(cId.longValue()));
 	}
 	
 	@RequestMapping(value = "/info")
-	public @ResponseBody Object info(@RequestParam("id")Long id) {
+	public @ResponseBody Object info(@RequestParam("clid")Long id) {
 		return this.getResult(clothBiz.findOne(id));
 	}
 	

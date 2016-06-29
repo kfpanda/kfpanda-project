@@ -18,6 +18,9 @@ public interface CategoryMapper {
     
     @Select(CategorySql.FINDBYID_SQL)
 	Category findOne(Long id);
+
+    @Select(CategorySql.FINDBYCATEGORY_SQL)
+    Category findByCategory(String category);
     
     @Select(CategorySql.FINDALL_SQL)
 	List<Category> findAll();
