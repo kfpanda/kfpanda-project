@@ -30,7 +30,7 @@ public class CategoryBiz {
 		return categoryMapper.findAll();
 	}
 
-	public Category findByCategory(String category){
+	public List<Category> findByCategory(String category){
 		return categoryMapper.findByCategory(category);
 	}
 	

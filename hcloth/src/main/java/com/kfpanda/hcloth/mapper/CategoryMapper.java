@@ -20,7 +20,7 @@ public interface CategoryMapper {
 	Category findOne(Long id);
 
     @Select(CategorySql.FINDBYCATEGORY_SQL)
-    Category findByCategory(String category);
+    List<Category> findByCategory(String category);
     
     @Select(CategorySql.FINDALL_SQL)
 	List<Category> findAll();

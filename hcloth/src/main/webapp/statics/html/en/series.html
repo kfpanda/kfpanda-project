@@ -18,15 +18,14 @@
     </head>
     <body>
         <div class="nav clearfix">
-            <a class="logo l" href="../en/index.html"></a>
+            <a class="logo l" href="./index.html"></a>
             <ul class="menu l clearfix">
                 <li>
                     About
                     <div class="submenu">
                         <ul class="menu clearfix">
-                            <li><a href="javascript:;">Profile</a></li>
-                            <li><a href="javascript:;">News</a></li>
-                            <li><a href="javascript:;">Project reference</a></li>
+                            <li><a href="./profile.html">Profile</a></li>
+                            <li><a href="./culture.html">Culture</a></li>
                         </ul>
                     </div>
                 </li>
@@ -35,16 +34,14 @@
                     <div class="submenu">
                         <ul class="menu clearfix">
                             <li class="space">About</li>
-                            <li><a href="javascript:;">Curtains</a></li>
-                            <li><a href="javascript:;">Upholatery</a></li>
-                            <li><a href="javascript:;">Wallpaper</a></li>
+                            <li>Curtains</li>
                         </ul>
                     </div>
                 </li>
-                <li><a href="javascript:;">Contact</a></li>
+                <li><a href="./contact.html">Contact</a></li>
             </ul>
             <div class="lang r">
-                <a href="../en/index.html">EN</a><i></i><a href="../zh/index.html">CN</a>
+                <a href="javascript:;" la="en">EN</a><i></i><a href="javascript:;" la="zh">CN</a>
             </div>
             <div class="search r">
                 <form action="./collection.html" method="get">
@@ -101,18 +98,18 @@
                  -->
             </ul>
         </div>
-		<script type="text/javascript" src="../../js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-1.12.4.min.js"></script>
 		<script type="text/javascript" src="../../js/fn.js"></script>
 		<script type="text/javascript">
-            $(function($){
+            $(function(){
                 $(window).on('resize', function(e){
                     calcMt();
                 });
                 $('.pos').width($('body').width() - 190); // 初始化宽度
-                
+
                 // return;
                 calcMt();
-                $('.pos').animate({ 
+                $('.pos').animate({
                     left: '190px'
                 }, 500, function(){
                     $('.pos').width('auto');
@@ -122,7 +119,7 @@
                 $('#category').text(queryUrlParam('name') || 'No Name');
                 query(queryUrlParam('cid'));
             });
-            
+
             function calcMt(){
                 var h = $('.pos').height();
                 var ih = $('.lumps').height();
@@ -166,7 +163,7 @@
                         html.push(
                             '<li onselectstart="return false;">',
                                 '<a href="./detail.html?clid=', d.id, '">',
-                                    '<img src="', d.img, '" />',
+                                    '<div><img src="', d.img, '" /></div>',
                                     '<span>', d.name, '</span>',
                                 '</a>',
                             '</li>');

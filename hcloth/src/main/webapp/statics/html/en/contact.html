@@ -14,7 +14,7 @@
 			<script type="text/javascript" src="../../js/html5shiv.min.js"></script>
 		<![endif]-->
         <link type="text/css" rel="stylesheet" href="../../css/base.css" />
-        <link type="text/css" rel="stylesheet" href="../../css/index.css" />
+        <link type="text/css" rel="stylesheet" href="../../css/contact.css" />
     </head>
     <body>
         <div class="nav clearfix">
@@ -38,7 +38,7 @@
                         </ul>
                     </div>
                 </li>
-                <li><a href="./contact.html">Contact</a></li>
+                <li class="active">Contact</li>
             </ul>
             <div class="lang r">
                 <a href="javascript:;" la="en">EN</a><i></i><a href="javascript:;" la="zh">CN</a>
@@ -50,26 +50,51 @@
                 </form>
             </div>
         </div>
-        <div class="loop">
-            <ul id="loop" idx="0">
-                <li style="display:block;background-image:url(../../img/cloth/cloth-01.jpg);"></li>
-                <li style="background-image:url(../../img/cloth/cloth-02.jpg);"></li>
-                <li style="background-image:url(../../img/cloth/cloth-03.jpg);"></li>
+        <div class="w1050cm8">
+            <h1 class="l-title">DISTRIBUTORS</h1>
+            <ul class="clearfix addrs">
+                <li>
+                    <h2 class="m-title">ELMAR</h2>
+                    <p>
+                        Room 836-838 Art Exhibition Center Phrase I<br/>
+                        Meiyuan Road, Luohu District, Shenzhen<br/>
+                        518023, China<br/>
+                        T: (86) 755 2395 8163<br/>
+                        <a target="_blank" href="http://www.elmar-sz.com">www.elmar-sz.com</a>
+                    </p>
+                </li>
+                <li>
+                    <h2 class="m-title">VAN COLLECTION</h2>
+                    <p>
+                        Room 102, N0. 1887 Longhua Road,<br/>
+                        Xuhui District, Shanghai<br/>
+                        200030, China<br/>
+                        T: (86) 21 5160 1165<br/>
+                        <a target="_blank" href="http://www.vancollection.com">www.vancollection.com</a>
+                    </p>
+                </li>
+                <li>
+                    <h2 class="m-title">CASA CALVINO</h2>
+                    <p>
+                        Room 305-1, No. 1699 Gubei Road<br/>
+                        Minhang District, Shanghai<br/>
+                        201103, China<br/>
+                        T: (86) 21 5175 6119<br/>
+                        <a target="_blank" href="http://www.calvinodesign.it">www.calvinodesign.it</a>
+                    </p>
+                </li>
             </ul>
+            <h1 class="l-title mt32">SHOWROOM  DETAILS</h1>
+            <p class="altxt">
+                No.102-A Lixi Road, Shanghai<br/>
+                200050, China<br/>
+                <a target="_blank" href="http://j.map.baidu.com/-3V2H">VIEW MAP</a><br/>
+                <em>Opening Hours : MON-FRI 10:00-18:00</em><br/>
+                T: (86) 21 5299 6853<br/>
+                E: info@parallel-textiles.com<br/>
+            </p>
         </div>
 		<script type="text/javascript" src="../../js/jquery-1.12.4.min.js"></script>
 		<script type="text/javascript" src="../../js/fn.js"></script>
-		<script type="text/javascript">
-            $(function(){
-                setInterval(function(){
-                    var ul = $('#loop');
-                    var idx = parseInt(ul.attr('idx'), 10);
-                    var nidx = (idx+1)%3;
-                    ul.attr('idx', nidx);
-                    ul.find('li').eq(idx).fadeOut(1250);
-                    ul.find('li').eq(nidx).fadeIn(1250);
-                }, 6000);
-            });
-        </script>
     </body>
 </html>

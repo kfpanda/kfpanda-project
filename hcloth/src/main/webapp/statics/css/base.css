@@ -1,51 +1,51 @@
 @charset "utf-8";
 @font-face {
-	font-family: Avenir Roman;
-	src: url('../font/Avenir-Roman.otf') format('opentype'); 
-	/* src: url('../font/Avenir LT 35 Light.ttf') format('truetype');  */
+    font-family: Avenir Roman;
+    src: url('../font/Avenir-Roman.otf') format('opentype');
+    /* src: url('../font/Avenir LT 35 Light.ttf') format('truetype');  */
 }
 @font-face {
-	font-family: Avenir Light;
-	src: url('../font/AvenirLTStd-Light.otf') format('opentype');
+    font-family: Avenir Light;
+    src: url('../font/AvenirLTStd-Light.otf') format('opentype');
 }
 @font-face {
-	font-family: Avenir Medium;
-	src: url('../font/AvenirLTStd-Medium.otf') format('opentype'); 
+    font-family: Avenir Medium;
+    src: url('../font/AvenirLTStd-Medium.otf') format('opentype');
 }
 @font-face {
-	font-family: FZLanTingXH;
-	src: url('../font/fzltxh_GBK_M.ttf'); 
+    font-family: FZLanTingXH;
+    src: url('../font/fzltxh_GBK_M.ttf');
 }
 /** 清除内外边距 **/
 body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */ dl, dt, dd, ul, ol, li, /* list elements 列表元素 */ pre, /* text formatting elements 文本格式元素 */ form, fieldset, legend, button, input, textarea, /* form elements 表单元素 */ th, td /* table elements 表格元素 */ {
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 /** 默认字体 **/
 body, select, input, textarea, button {
-	font-family: 'Microsoft Yahei Light', 'Microsoft Yahei', Tahoma, Helvetica, Arial, '\5b8b\4f53', sans-serif;
-	font-size: 14px;
-	line-height: 1.42857143;
-	color: #333;
+    font-family: 'Microsoft Yahei Light', 'Microsoft Yahei', Tahoma, Helvetica, Arial, '\5b8b\4f53', sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
 }
 /** border-box **/
 * {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 /** 禁止局部高亮 **/
 html{
-	-webkit-tap-highlight-color: rgba(0,0,0,0);
-	-webkit-text-size-adjust: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-text-size-adjust: none;
 }
 /** iOS/Mac OS 按钮样式还原 **/
 input[type=button], button {
-	-webkit-appearance:none;
+    -webkit-appearance:none;
 }
 
 html, body {
-	height: 100%;
+    height: 100%;
 }
 
 body {
@@ -96,6 +96,7 @@ select {
 .mt4 { margin-top: 4px; }
 .mt8 { margin-top: 8px; }
 .mt16 { margin-top: 16px; }
+.mt32 { margin-top: 32px; }
 .mb4 { margin-bottom: 4px; }
 .mb8 { margin-bottom: 8px; }
 .mb16 { margin-bottom: 16px; }
@@ -111,6 +112,15 @@ select {
 .w400 { width: 400px!important; }
 .w540 { width: 540px!important; }
 .w640 { width: 640px!important; }
+
+.w1200cm6 {
+    width: 1200px;
+    margin: 60px auto;
+}
+.w1050cm8 {
+    width: 1050px;
+    margin: 80px auto;
+}
 
 .nav {
     position: relative;
@@ -178,16 +188,16 @@ select {
     font-family: Avenir Light;
 }
 .search input::-webkit-input-placeholder {
-	color: #727171;
+    color: #727171;
 }
 .search input:-ms-input-placeholder { // IE10+
-	color: #727171;
+    color: #727171;
 }
 .search input:-moz-placeholder { // Firefox4-18
-	color: #727171;
+    color: #727171;
 }
 .search input::-moz-placeholder { // Firefox19+
-	color: #727171;
+    color: #727171;
 }
 .search button {
     position: absolute;

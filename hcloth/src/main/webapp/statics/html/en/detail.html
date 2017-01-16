@@ -18,15 +18,14 @@
     </head>
     <body>
         <div class="nav clearfix">
-            <a class="logo l" href="../en/index.html"></a>
+            <a class="logo l" href="./index.html"></a>
             <ul class="menu l clearfix">
                 <li>
                     About
                     <div class="submenu">
                         <ul class="menu clearfix">
-                            <li><a href="javascript:;">Profile</a></li>
-                            <li><a href="javascript:;">News</a></li>
-                            <li><a href="javascript:;">Project reference</a></li>
+                            <li><a href="./profile.html">Profile</a></li>
+                            <li><a href="./culture.html">Culture</a></li>
                         </ul>
                     </div>
                 </li>
@@ -35,16 +34,14 @@
                     <div class="submenu">
                         <ul class="menu clearfix">
                             <li class="space">About</li>
-                            <li><a href="javascript:;">Curtains</a></li>
-                            <li><a href="javascript:;">Upholatery</a></li>
-                            <li><a href="javascript:;">Wallpaper</a></li>
+                            <li>Curtains</li>
                         </ul>
                     </div>
                 </li>
-                <li><a href="javascript:;">Contact</a></li>
+                <li><a href="./contact.html">Contact</a></li>
             </ul>
             <div class="lang r">
-                <a href="../en/index.html">EN</a><i></i><a href="../zh/index.html">CN</a>
+                <a href="javascript:;" la="en">EN</a><i></i><a href="javascript:;" la="zh">CN</a>
             </div>
             <div class="search r">
                 <form action="./collection.html" method="get">
@@ -74,18 +71,18 @@ environment : Reduced environmental impact
             <!--<a class="back" href="./series.html?series=breath"></a>-->
             <div onselectstart="return false;" class="text-tip">Loading...</div>
         </div>
-		<script type="text/javascript" src="../../js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-1.12.4.min.js"></script>
 		<script type="text/javascript" src="../../js/fn.js"></script>
 		<script type="text/javascript">
-            $(function($){
+            $(function(){
                 $(window).on('resize', function(e){
                     calcMt();
                 });
                 calcMt();
-                
+
                 query(queryUrlParam('clid'));
             });
-            
+
             function calcMt(){
                 var h = $('body').height() - 50;
                 var ih = $('.pos-nav').height();
@@ -124,7 +121,7 @@ environment : Reduced environmental impact
                 }else{
                     var html = [];
                     $('.c-name').text(data.name || 'No Name');
-                    $('.cloth').css('background-image', 'url(' + data.img + ')').html('<a class="back" href="./series.html?cid=' + data.cid +'&name=', data.name, '"></a>');
+                    $('.cloth').css('background-image', 'url(' + data.img + ')').html('<a class="back" href="./series.html?cid=' + data.cid +'&name=' + data.ct_name + '"></a>');
                     html.push('design : ' + data.design);
                     html.push('composition : ' + data.composition);
                     html.push('width : ' + data.width);
@@ -137,6 +134,7 @@ environment : Reduced environmental impact
                     html.push('colour : ' + data.colour);
                     html.push('environment : ' + data.environment);
                     $('.c-des').html(html.join('\n'));
+                    calcMt();
                 }
             };
         </script>

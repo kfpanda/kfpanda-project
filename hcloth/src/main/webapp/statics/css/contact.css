@@ -1,0 +1,52 @@
+@charset "utf-8";
+body {
+    background-color: #fff;
+}
+.l-title {
+    color: #919295;
+    text-decoration: underline;
+    text-align: center;
+    font-family: Avenir Medium;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 3;
+}
+.addrs {
+    color: #919295;
+}
+.addrs li {
+    float: left;
+    width: 350px;
+}
+.addrs li h2 {
+    text-align: center;
+    font-family: Avenir Medium;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 3;
+}
+.addrs li p {
+    text-align: center;
+    font-family: Avenir Light;
+    font-size: 14px;
+    line-height: 2;
+}
+.addrs a {
+    color: #919295;
+}
+.altxt {
+    color: #919295;
+    text-align: center;
+    font-family: Avenir Light;
+    font-size: 14px;
+    line-height: 2;
+}
+.altxt a {
+    color: #919295;
+    font-size: 12px;
+    text-decoration: underline;
+}
+.altxt em {
+    font-style: normal;
+    line-height: 4;
+}

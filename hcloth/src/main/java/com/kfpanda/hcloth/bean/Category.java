@@ -11,6 +11,7 @@ public class Category implements Serializable{
 	private Timestamp createTime;
 	private String name;
 	private String category;
+	private String thumb;
 	
 	public Long getId() {
     	return id;
@@ -36,7 +37,12 @@ public class Category implements Serializable{
 	public void setCategory(String category) {
     	this.category = category;
     }
-
+	public String getThumb() {
+		return thumb;
+	}
+	public void setThumb(String thumb) {
+		this.thumb = thumb;
+	}
 
 	@Override
 	public int hashCode() {

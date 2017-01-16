@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />
         <meta http-equiv="Cache-Control" content="no-siteapp" />
         <meta name="keywords" content="cloth" />
         <meta name="description" content="fine cloth" />
         <meta name="author" content="hain,hain1orz@163.com" />
         <meta name="robots" content="index,follow" />
         <title>Parallel</title>
-		<!--[if lt IE 9]>
-			<script type="text/javascript" src="../../js/html5shiv.min.js"></script>
-		<![endif]-->
+        <!--[if lt IE 9]>
+            <script type="text/javascript" src="../../js/html5shiv.min.js"></script>
+        <![endif]-->
         <link type="text/css" rel="stylesheet" href="../../css/base.css" />
-        <link type="text/css" rel="stylesheet" href="../../css/index.css" />
+        <link type="text/css" rel="stylesheet" href="../../css/contact.css" />
     </head>
     <body>
         <div class="nav clearfix">
             <a class="logo l" href="./index.html"></a>
             <ul class="menu l clearfix">
-                <li>
+                <li class="active">
                     About
                     <div class="submenu">
                         <ul class="menu clearfix">
-                            <li><a href="./profile.html">Profile</a></li>
+                            <li>Profile</li>
                             <li><a href="./culture.html">Culture</a></li>
                         </ul>
                     </div>
@@ -50,26 +50,13 @@
                 </form>
             </div>
         </div>
-        <div class="loop">
-            <ul id="loop" idx="0">
-                <li style="display:block;background-image:url(../../img/cloth/cloth-01.jpg);"></li>
-                <li style="background-image:url(../../img/cloth/cloth-02.jpg);"></li>
-                <li style="background-image:url(../../img/cloth/cloth-03.jpg);"></li>
-            </ul>
+        <div>
+            Profile
         </div>
-		<script type="text/javascript" src="../../js/jquery-1.12.4.min.js"></script>
-		<script type="text/javascript" src="../../js/fn.js"></script>
-		<script type="text/javascript">
-            $(function(){
-                setInterval(function(){
-                    var ul = $('#loop');
-                    var idx = parseInt(ul.attr('idx'), 10);
-                    var nidx = (idx+1)%3;
-                    ul.attr('idx', nidx);
-                    ul.find('li').eq(idx).fadeOut(1250);
-                    ul.find('li').eq(nidx).fadeIn(1250);
-                }, 6000);
-            });
+        <script type="text/javascript" src="../../js/jquery-1.12.4.min.js"></script>
+        <script type="text/javascript" src="../../js/fn.js"></script>
+        <script type="text/javascript">
+            console.log('Profile...');
         </script>
     </body>
 </html>
